@@ -11,4 +11,8 @@ public class SampleController {
         return "Hello there";
     }
 
+    public static String sampleMethod() {
+        return "Hello!";
+    }
+
 }
