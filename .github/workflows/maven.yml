@@ -38,6 +38,8 @@ jobs:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
+        run: |
+          chmod +x mvnw
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
