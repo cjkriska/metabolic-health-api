@@ -39,9 +39,6 @@ jobs:
       - name: Change permissions
         run: |
           chmod +x mvnw
-      - name: Authorize
-        run: |
-          snyk auth
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
         env:
