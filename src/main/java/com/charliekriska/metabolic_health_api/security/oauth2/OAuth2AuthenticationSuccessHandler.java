@@ -1,9 +1,13 @@
 package com.charliekriska.metabolic_health_api.security.oauth2;
 
 import com.charliekriska.metabolic_health_api.config.AppProperties;
+import com.charliekriska.metabolic_health_api.exception.BadRequestException;
+import com.charliekriska.metabolic_health_api.security.TokenProvider;
+import com.charliekriska.metabolic_health_api.util.CookieUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Cookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;

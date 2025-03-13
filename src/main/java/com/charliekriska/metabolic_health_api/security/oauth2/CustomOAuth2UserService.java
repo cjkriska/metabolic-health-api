@@ -1,8 +1,10 @@
 package com.charliekriska.metabolic_health_api.security.oauth2;
 
+import com.charliekriska.metabolic_health_api.exception.OAuth2AuthenticationProcessingException;
 import com.charliekriska.metabolic_health_api.model.AuthProvider;
 import com.charliekriska.metabolic_health_api.model.User;
 import com.charliekriska.metabolic_health_api.repository.UserRepository;
+import com.charliekriska.metabolic_health_api.security.UserPrincipal;
 import com.charliekriska.metabolic_health_api.security.oauth2.user.OAuth2UserInfo;
 import com.charliekriska.metabolic_health_api.security.oauth2.user.OAuth2UserInfoFactory;
 import org.springframework.beans.factory.annotation.Autowired;

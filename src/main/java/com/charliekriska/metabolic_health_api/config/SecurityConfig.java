@@ -1,5 +1,8 @@
 package com.charliekriska.metabolic_health_api.config;
 
+import com.charliekriska.metabolic_health_api.security.CustomUserDetailsService;
+import com.charliekriska.metabolic_health_api.security.RestAuthenticationEntryPoint;
+import com.charliekriska.metabolic_health_api.security.TokenAuthenticationFilter;
 import com.charliekriska.metabolic_health_api.security.oauth2.CustomOAuth2UserService;
 import com.charliekriska.metabolic_health_api.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.charliekriska.metabolic_health_api.security.oauth2.OAuth2AuthenticationFailureHandler;
@@ -107,9 +110,9 @@ public class SecurityConfig {
                         .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
                                 .userService(customOAuth2UserService)
                         )
-                )
-                .successHandler(oAuth2AuthenticationSuccessHandler)
-                .failureHandler(oAuth2AuthenticationFailureHandler);
+                        .successHandler(oAuth2AuthenticationSuccessHandler)
+                        .failureHandler(oAuth2AuthenticationFailureHandler)
+                );
 
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 

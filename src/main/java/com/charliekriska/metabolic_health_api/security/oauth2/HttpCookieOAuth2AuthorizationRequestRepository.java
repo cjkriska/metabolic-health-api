@@ -1,5 +1,7 @@
 package com.charliekriska.metabolic_health_api.security.oauth2;
 
+import com.charliekriska.metabolic_health_api.util.CookieUtils;
+import com.nimbusds.oauth2.sdk.util.StringUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
