@@ -1,5 +1,6 @@
 package com.charliekriska.metabolic_health_api.security.oauth2.user;
 
+import com.charliekriska.metabolic_health_api.exception.OAuth2AuthenticationProcessingException;
 import com.charliekriska.metabolic_health_api.model.AuthProvider;
 
 import java.util.Map;
