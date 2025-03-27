@@ -1,6 +1,8 @@
 package com.charliekriska.metabolic_health_api.controller;
 
 import com.charliekriska.metabolic_health_api.exception.BadRequestException;
+import com.charliekriska.metabolic_health_api.exception.InvalidCredentialsException;
+import com.charliekriska.metabolic_health_api.exception.ResourceNotFoundException;
 import com.charliekriska.metabolic_health_api.model.AuthProvider;
 import com.charliekriska.metabolic_health_api.model.User;
 import com.charliekriska.metabolic_health_api.payload.ApiResponse;
@@ -44,17 +46,23 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getEmail(),
-                        loginRequest.getPassword()
-                )
-        );
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            loginRequest.getEmail(),
+                            loginRequest.getPassword()
+                    )
+            );
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        String token = tokenProvider.createToken(authentication);
-        return ResponseEntity.ok(new AuthResponse(token));
+            String token = tokenProvider.createToken(authentication);
+            return ResponseEntity.ok(new AuthResponse(token));
+
+        } catch(Exception e) {
+            throw new InvalidCredentialsException("Incorrect username or password.");
+        }
+
     }
 
     @PostMapping("/signup")
